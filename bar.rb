@@ -6,6 +6,8 @@ class Bar
     @total = total
   end
 
-  
+  def total_can_be_added_to(drink)
+    @total += drink
+  end
 
 end
