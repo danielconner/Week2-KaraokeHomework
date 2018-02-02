@@ -12,9 +12,9 @@ class RoomTest < MiniTest::Test
     @song1 = Song.new("Aqua", "Barbie Girl")
     @song2 = Song.new("We're going to Ibiza", "Vengaboys")
     @songs3 = Song.new("Summer of 69", "Bryan Adams")
+    @song4 = Song.new("Basket Case", "Green Day")
     @guest1 = Guest.new("Sophia", 28, 100.00, "You broke up with me")
     @guest2 = Guest.new("Danny", 29, 10.00, "Basket Case")
-    @songs = [@song1,@song2,@song3]
   end
 
   def test_room_has_a_name
@@ -41,8 +41,43 @@ class RoomTest < MiniTest::Test
     assert_equal(1, @room.capacity_count())
   end
 
-  def test_room_has_songs
-    assert_equal(3, @room.song_count())
-  end 
+  def test_how_many_songs_on_playlist
+    assert_equal(0, @room.playlist_length())
+  end
+
+  def test_add_songs_to_playlist
+    @room.add_songs_to_playlist(@song1)
+    @room.add_songs_to_playlist(@song2)
+    @room.add_songs_to_playlist(@song3)
+    assert_equal(3, @room.playlist_length())
+  end
+
+  def test_typical_karaoke_experience
+    @room.add_guest(@guest1)
+    @room.add_guest(@guest2)
+    @room.add_songs_to_playlist(@song1)
+    @room.add_songs_to_playlist(@song2)
+    @room.add_songs_to_playlist(@song3)
+    @guest1.add_to_song_queue(@song1)
+    @guest1.song_has_been_sung()
+    @room.remove_guest()
+    @room.remove_guest()
+  end
+
+
+  def test_too_many_guests_in_room
+    @room.add_guest(@guest1)
+    @room.add_guest(@guest2)
+    result = @room.is_room_over_capacity
+    assert_equal("Too many people in the room", result)
+  end
+
+  def test_guest_can_afford_room
+    @room.add_guest(@guest1)
+
+    assert_equal(true, @room.guest_can_afford_room(@guest1))
+  end
+
+
 
 end
