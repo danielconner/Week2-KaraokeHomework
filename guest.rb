@@ -26,4 +26,9 @@ class Guest
     @wallet -= fee
   end
 
+  def can_buy_drink(drink)
+    @wallet -= drink
+  end
+
+
 end
