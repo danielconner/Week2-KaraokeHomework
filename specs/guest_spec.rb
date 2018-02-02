@@ -3,11 +3,20 @@ require ("minitest/rg")
 
 require_relative("../guest.rb")
 require_relative("../song.rb")
+require_relative("../bar.rb")
+require_relative("../room.rb")
+
 
 class GuestTest < MiniTest::Test
   def setup
     @guest = Guest.new("Sophia", 28, 100.00, "You broke up with me")
     @song = Song.new("Taylor Swift", "22")
+    @room = Room.new("Cheesy Pop Room", 10.00)
+    @bar = Bar.new(drinks = [{
+      Whiskey: 3.00,
+      beer: 2.00,
+      wine: 4.00,
+      }])
   end
 
   def test_guest_has_a_name
@@ -20,6 +29,10 @@ class GuestTest < MiniTest::Test
 
   def test_guest_has_a_wallet
     assert_equal(100.00, @guest.wallet)
+  end
+
+  def test_can_add_and_remove_money
+    assert_equal(90.00, @guest.can_add_and_remove_money(@room.fee))
   end
 
   def test_guest_has_a_favourite_song_title
@@ -39,6 +52,9 @@ class GuestTest < MiniTest::Test
     @guest.add_to_song_queue(@song)
     @guest.song_has_been_sung()
     assert_equal(0, @guest.song_queue_count())
-  end 
+  end
 
+  # def test_customer_can_buy_drinks
+  #
+  # end
 end

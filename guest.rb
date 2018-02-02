@@ -20,6 +20,10 @@ class Guest
 
   def song_has_been_sung
     @song_queue.shift()
-  end 
+  end
+
+  def can_add_and_remove_money(fee)
+    @wallet -= fee
+  end
 
 end
