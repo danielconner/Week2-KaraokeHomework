@@ -43,4 +43,14 @@ class Room
     end
   end
 
+  def favourite_song_is_on_playlist(guest)
+    for song in @playlist
+      if guest.favourite_song_title == song.title
+        return "Yass they have #{guest.favourite_song_title}"
+      else
+        return "Sorry we don't have #{guest.favourite_song_title}"
+      end
+    end
+  end
+
 end
