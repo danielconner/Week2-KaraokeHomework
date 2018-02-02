@@ -2,25 +2,17 @@ require ("minitest/autorun")
 require ("minitest/rg")
 
 require_relative("../bar.rb")
+require_relative("../drinks.rb")
 
 class BarTest < MiniTest::Test
 
   def setup
-
-    @bar = Bar.new(drinks = {
-      Whiskey: 3.00,
-      beer: 2.00,
-      wine: 4.00,
-      })
+    @bar = Bar.new(0)
   end
 
-  def test_bar_has_drinks
-    drinks = {
-      Whiskey: 3.00,
-      beer: 2.00,
-      wine: 4.00,
-      }
-    assert_equal(drinks, @bar.has_drinks())
+  def test_bar_has_total
+    assert_equal(0,@bar.total)
+
   end
 
 

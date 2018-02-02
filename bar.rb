@@ -1,13 +1,11 @@
 class Bar
 
-  attr_reader :drinks
+  attr_reader :total
 
-  def initialize(drinks)
-    @drinks = drinks
+  def initialize(total)
+    @total = total
   end
 
-  def has_drinks
-    @drinks
-  end
+  
 
 end
