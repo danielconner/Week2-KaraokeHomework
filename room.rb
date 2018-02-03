@@ -35,14 +35,6 @@ class Room
     end
   end
 
-  def guest_can_afford_room(guest)
-    if guest.wallet >= @fee
-      return true
-    else
-      return "Please leave you cannot afford to sing here!"
-    end
-  end
-
   def favourite_song_is_on_playlist(guest)
     for song in @playlist
       if guest.favourite_song_title == song.title

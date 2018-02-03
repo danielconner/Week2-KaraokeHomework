@@ -13,8 +13,8 @@ class RoomTest < MiniTest::Test
     @song2 = Song.new("We're going to Ibiza", "Vengaboys")
     @song3 = Song.new("Summer of 69", "Bryan Adams")
     @song4 = Song.new("Basket Case", "Green Day")
-    @guest1 = Guest.new("Sophia", 28, 100.00, "You broke up with me")
-    @guest2 = Guest.new("Danny", 29, 10.00, "Basket Case")
+    @guest1 = Guest.new("Sophia", 28, 0.00, "You broke up with me")
+    @guest2 = Guest.new("Danny", 29, 0.00, "Basket Case")
   end
 
   def test_room_has_a_name
@@ -72,10 +72,6 @@ class RoomTest < MiniTest::Test
     assert_equal("Too many people in the room", result)
   end
 
-  def test_guest_can_afford_room
-    @room.add_guest(@guest1)
-    assert_equal(true, @room.guest_can_afford_room(@guest1))
-  end
 
   def test_favourite_song_is_in_playlist
     @room.add_guest(@guest2)

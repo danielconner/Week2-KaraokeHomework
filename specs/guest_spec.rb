@@ -10,7 +10,7 @@ require_relative("../drinks.rb")
 
 class GuestTest < MiniTest::Test
   def setup
-    @guest = Guest.new("Sophia", 28, 100.00, "You broke up with me")
+    @guest = Guest.new("Sophia", 28, 0.00, "You broke up with me")
     @song = Song.new("Taylor Swift", "22")
     @room = Room.new("Cheesy Pop Room", 10.00)
     @bar = Bar.new(0)#could bar be taken away and included in the drinks class as a counter
@@ -27,12 +27,12 @@ class GuestTest < MiniTest::Test
     assert_equal(28, @guest.age)
   end
 
-  def test_guest_has_a_wallet
-    assert_equal(100.00, @guest.wallet)
+  def test_guest_has_a_bar_tab
+    assert_equal(0.00, @guest.bar_tab)
   end
 
   def test_can_add_and_remove_money
-    assert_equal(90.00, @guest.can_add_and_remove_money(@room.fee))
+    assert_equal(10.00, @guest.can_add_and_remove_money(@room.fee))
   end
 
   def test_guest_has_a_favourite_song_title
@@ -55,6 +55,6 @@ class GuestTest < MiniTest::Test
   end
 
   def test_customer_can_buy_drinks
-    assert_equal(95.00, @guest.can_buy_drink(@drink3.price))
+    assert_equal(5.00, @guest.can_buy_drink(@drink3.price))
   end
 end

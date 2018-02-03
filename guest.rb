@@ -1,11 +1,11 @@
 class Guest
 
-  attr_reader :name, :age, :wallet, :favourite_song_title, :song_queue
+  attr_reader :name, :age, :bar_tab, :favourite_song_title, :song_queue
 
-  def initialize(name, age, wallet, favourite_song_title)
+  def initialize(name, age, bar_tab, favourite_song_title)
     @name = name
     @age = age
-    @wallet = wallet
+    @bar_tab = 0
     @favourite_song_title = favourite_song_title
     @song_queue = []
   end
@@ -23,11 +23,11 @@ class Guest
   end
 
   def can_add_and_remove_money(fee)
-    @wallet -= fee
+    @bar_tab += fee
   end
 
   def can_buy_drink(drink)
-    @wallet -= drink
+    @bar_tab += drink
   end
 
 
