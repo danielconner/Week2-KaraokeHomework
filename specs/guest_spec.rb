@@ -3,7 +3,6 @@ require ("minitest/rg")
 
 require_relative("../guest.rb")
 require_relative("../song.rb")
-require_relative("../bar.rb")
 require_relative("../room.rb")
 require_relative("../drinks.rb")
 
@@ -13,7 +12,6 @@ class GuestTest < MiniTest::Test
     @guest = Guest.new("Sophia", 28, 0.00, "You broke up with me")
     @song = Song.new("Taylor Swift", "22")
     @room = Room.new("Cheesy Pop Room", 10.00)
-    @bar = Bar.new(0)#could bar be taken away and included in the drinks class as a counter
     @drink1 = Drinks.new("Whiskey", 3.00)
     @drink2 = Drinks.new("Beer", 4.00)
     @drink3 = Drinks.new("Wine", 5.00)
