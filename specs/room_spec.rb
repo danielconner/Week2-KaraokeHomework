@@ -4,6 +4,7 @@ require ("minitest/rg")
 require_relative("../room.rb")
 require_relative("../guest.rb")
 require_relative("../song.rb")
+require_relative("../drinks.rb")
 
 class RoomTest < MiniTest::Test
 
@@ -15,6 +16,9 @@ class RoomTest < MiniTest::Test
     @song4 = Song.new("Basket Case", "Green Day")
     @guest1 = Guest.new("Sophia", 28, 0.00, "You broke up with me")
     @guest2 = Guest.new("Danny", 29, 0.00, "Basket Case")
+    @drink1 = Drinks.new("Whiskey", 3.00)
+    @drink2 = Drinks.new("Beer", 4.00)
+    @drink3 = Drinks.new("Wine", 5.00)
   end
 
   def test_room_has_a_name
@@ -55,11 +59,17 @@ class RoomTest < MiniTest::Test
   def test_typical_karaoke_experience
     @room.add_guest(@guest1)
     @room.add_guest(@guest2)
+    @guest1.can_add_and_remove_money(@room.fee)
+    @guest2.can_add_and_remove_money(@room.fee)
     @room.add_songs_to_playlist(@song1)
     @room.add_songs_to_playlist(@song2)
     @room.add_songs_to_playlist(@song3)
+    @room.add_songs_to_playlist(@song4)
+    @room.favourite_song_is_on_playlist(@guest2)
     @guest1.add_to_song_queue(@song1)
     @guest1.song_has_been_sung()
+    @guest1.can_buy_drink(@drink1.price)
+    @guest2.can_buy_drink(@drink3.price)
     @room.remove_guest()
     @room.remove_guest()
   end
